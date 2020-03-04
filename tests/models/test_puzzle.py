@@ -2,10 +2,13 @@ from models.puzzle import Puzzle
 
 
 class TestPuzzleCreate:
-    def test_adjectives_1(self):
-        puzzle_test = Puzzle('opties', ['iets'])
-        print(puzzle_test.getPangram())
-        print(puzzle_test.getMainLetter())
-        print(puzzle_test.getPossibleWords())
-        print(puzzle_test.getSecondaryLetters())
-        print(puzzle_test)
+    def test_initialization(self):
+        # TODO: make this semi random based on the word list
+        pangram = 'oertijd'
+        possible_words = {'oertijd'}
+        # possible_words = {'tijd', 'rijd', 'doet'}
+        puzzle = Puzzle(pangram)
+
+        assert puzzle.getPangram() == pangram
+        assert puzzle.getPossibleWords() == possible_words
+        assert puzzle.getPrimaryLetter() not in puzzle.getSecondaryLetters()
